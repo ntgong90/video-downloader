@@ -1,27 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Download } from './DownloadButton'
-import { Title } from './Title'
-import { Input } from './Textinput'
-function App() {
+import { useState } from 'react';
+import './App.css';
+import { Download } from './DownloadButton';
+import { Title } from './Title';
+import { Input } from './Textinput';
+import axios from 'axios';
 
+function App() {
   //Enter useState definitions below
-  //const [count, setCount] = useState(0);
+	const [url, setUrl] = useState('Enter URL'),
+				[result, setResult] = useState<string|null>(null);
+
+	const crawl = async () => {
+		try {
+			const response = await axios.post('/crawl', { url });
+			setResult(JSON.stringify(response.data, null, 2));
+		} catch (error) {
+			console.error("This shit ain't working");
+			setResult('Error fetching URL');
+		}
+	};
+	const consoleLog = () => {
+		console.log(url);
+	}
 
   return (
     <div className="mainApp">
       <Title title="Video Downloader"/>
       <div className="card">
-      <Input url="test"/>
+      <Input 
+				clickChange={setUrl}
+				url={url}
+			/>
         <p>
           Enter video URL website to crawl
         </p>
       </div>
-      <Download/>
+      <Download
+				log={crawl}
+				videoUrl={url}
+			/>
     </div>
   )
 }
-
-export default App
+export default App;

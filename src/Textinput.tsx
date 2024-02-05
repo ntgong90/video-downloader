@@ -1,7 +1,16 @@
-export const Input = ({url}:{url:string}) => {
+export const Input = ({url,clickChange}:Readonly<{url:string, clickChange:(value: string) => void}>) => {
+
+	const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+		clickChange(event.target.value);
+	}
+
   return (
-    <label>
-     <input name={url} defaultValue="Video URL here" />
-    </label>
-  );
+		<div>
+			<input
+				type="text"
+				value={url}
+				onChange={handleChange}
+			/>
+		</div>
+	);
 };
