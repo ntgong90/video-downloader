@@ -19,6 +19,7 @@ Crawl Website for a video and download it
     - Logging
     - Unit testing
 
+
 ## IN PROGRESS
 - Build frontend
   - Accept input from user
@@ -33,4 +34,6 @@ Crawl Website for a video and download it
   - Store URL in database for history/logging
   - Storing on the cloud/file server
 
+## Issues
+- Build out endpoint first to fist 404
 

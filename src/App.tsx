@@ -12,15 +12,17 @@ function App() {
 
 	const crawl = async () => {
 		try {
-			const response = await axios.post('/crawl', { url });
+			const response = await axios.get('/crawl', { url });
 			setResult(JSON.stringify(response.data, null, 2));
+      console.log("Get request worked!")
 		} catch (error) {
 			console.error("This shit ain't working");
 			setResult('Error fetching URL');
 		}
 	};
+
 	const consoleLog = () => {
-		console.log(url);
+		console.log(result);
 	}
 
   return (
@@ -39,6 +41,9 @@ function App() {
 				log={crawl}
 				videoUrl={url}
 			/>
+      <button onClick={consoleLog}>
+        Console Log
+      </button>
     </div>
   )
 }
