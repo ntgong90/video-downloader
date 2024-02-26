@@ -35,5 +35,5 @@ Crawl Website for a video and download it
   - Storing on the cloud/file server
 
 ## Issues
-- Build out endpoint first to fist 404
+- Build out endpoint first to fix 404
 

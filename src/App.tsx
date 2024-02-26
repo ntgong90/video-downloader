@@ -12,9 +12,10 @@ function App() {
 
 	const crawl = async () => {
 		try {
-			const response = await axios.get('/crawl', { url });
+			const response = await axios.get('localhost:3000/');
 			setResult(JSON.stringify(response.data, null, 2));
       console.log("Get request worked!")
+      console.log(response)
 		} catch (error) {
 			console.error("This shit ain't working");
 			setResult('Error fetching URL');
@@ -38,7 +39,7 @@ function App() {
         </p>
       </div>
       <Download
-				log={crawl}
+				logData={crawl}
 				videoUrl={url}
 			/>
       <button onClick={consoleLog}>

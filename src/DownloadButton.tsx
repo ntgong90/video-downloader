@@ -1,7 +1,7 @@
-export const Download = ({videoUrl,log}:Readonly<{videoUrl:string,log:(event:string) => string}>) => {
+export const Download = ({videoUrl,logData}:Readonly<{videoUrl:string,logData:(event:string) => string}>) => {
   
 	const handleClick = () => {
-		log(videoUrl);
+		logData(videoUrl);
 	}
 	return (
     <button onClick={handleClick}>
